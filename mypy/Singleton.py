@@ -17,9 +17,9 @@ class SingletonMeta(type):
 class Singleton(metaclass=SingletonMeta):
     @classmethod
     def get_instance(cls):
-        return Singleton("INS")
+        return cls("INS")
 
-    def __init__(self, value) -> None:
+    def __init__(self, value: str) -> None:
         self.value = value
 
     def get_value(self) -> str:
