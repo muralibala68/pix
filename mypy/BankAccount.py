@@ -4,6 +4,7 @@ class BankAccount:
         self.account_balance = balance
 
     # Strange that getters must be defined before setters!!!
+    # Another strange thing is mypy reports 6 errors ;( not sure why!
     @property
     def account_name(self) -> str:
         return self._name
