@@ -9,23 +9,23 @@ class Employee:
         print("Object constructed")
 
     def __enter__(self):
-        print("Context management: entering context...")
+        print("Context management: entering context (i.e., with block)...")
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Context management: exiting context and releasing the resources...")
+        print("Context management: exiting context (i.e., with block) and releasing the resources...")
         if exc_type:
             print(f"An exception occurred: {exc_val}")
             return False # propagating the exception, if any
 
-    def to_string(self) -> str:
+    def __str__(self) -> str:
         return "Employee: [" + self.name + "][" + str(self.age) + "]"
 
 
 def main():
     try:
         with Employee("Murali", 62) as emp1:
-            print(emp1.to_string())
+            print(emp1)
             print(emp1.name)
             print(emp1.age)
 
