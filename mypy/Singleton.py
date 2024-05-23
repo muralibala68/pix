@@ -1,6 +1,7 @@
 from threading import Lock, Thread, current_thread
 
 
+# metaclass based implementation of thread safe singleton
 class SingletonMeta(type):
     _instances = {}
     _lock: Lock = Lock()
