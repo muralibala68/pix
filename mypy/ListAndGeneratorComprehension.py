@@ -17,7 +17,7 @@ odd = [n for n in range(10) if n % 2]
 print("odd_lc", odd)
 
 # Generator comprehension
-#
+# Note: The main difference: here parenthesis '(' is used instead of square brackets '['
 squares_gc = (n * n for n in range(5))
 print("squares_gc", squares)
 for n in squares_gc:
