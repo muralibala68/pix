@@ -11,7 +11,8 @@ class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list("JQKA")
 
     def __init__(self):
-        self.deck = [self.Card(r, s) for r in self.ranks for s in self.suits]
+        self.deck: FrenchDeck.Deck = [self.Card(r, s) for r in self.ranks
+                                                      for s in self.suits]
 
     def __repr__(self):
         return str(self.deck)
@@ -21,6 +22,9 @@ class FrenchDeck:
 
     def __len__(self):
         return len(self.deck)
+
+    def __getitem__(self, index):
+        return self.deck[index]
 
     def shuffle(self):
         print(self.deck)
@@ -37,6 +41,9 @@ def main():
     print(len(f_deck))
     f_deck.shuffle()
     print(f_deck.deal())
+    print(f_deck[0])
+    print(f_deck[1::2])
+    print(FrenchDeck)
 
 
 if __name__ == "__main__":
