@@ -6,28 +6,38 @@ class Employee:
             raise Exception("age is invalid")
         self.name = name.strip()
         self.age = age
+        self.active = True
         print("Object constructed")
 
     def __enter__(self):
-        print("Context management: entering context...")
+        print("Context management: entering With block...")
         return self
 
     def __exit__(self, exc_type, exc_val, exc_trace_back):
-        print("Context management: exiting context and releasing the resources...")
+        print("Context management: exiting With block and releasing the resources...")
         if exc_type:
             print(f"An exception occurred: {exc_val}")
             return False # propagating the exception, if any
 
-    def to_string(self) -> str:
+    def __repr__(self) -> str:
+        return f'Employee({self.name!r}, {self.age!r})'
+
+    def __str__(self) -> str:
         return "Employee: [" + self.name + "][" + str(self.age) + "]"
+
+    def __bool__(self) -> bool:
+        return self.active
 
 
 def main():
     try:
         with Employee("Murali", 62) as emp1:
-            print(emp1.to_string())
+            print(repr(Employee))
+            print(repr(emp1))
+            print(emp1)
             print(emp1.name)
             print(emp1.age)
+            print(emp1.name, "Employed" if bool(emp1) else "Quit")
 
         #with Employee("Neeela", 100) as emp2:
         #    print(emp2.to_string())
