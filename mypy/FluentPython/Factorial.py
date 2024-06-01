@@ -1,11 +1,14 @@
 def factorial(n: int) -> int:
-    return n * factorial(n - 1) if n > 0 else 1
+    return n * factorial(n - 1) if n > 1 else 1
 
+
+f = lambda n: factorial(n)
 
 print(factorial(0))
 print(factorial(1))
 print(factorial(2))
 print(factorial(3))
+print(f(3))
 
 # list comprehension
 print([factorial(n) for n in range(5)])
